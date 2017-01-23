@@ -31,7 +31,6 @@ app.set('port', (process.env.PORT || 3000));
 const port = app.get('port')
 const server = http.createServer(app);
 require ('./modules/user/routes/index')(app)
-require ('./modules/artifacts/routes/index')(app)
 
 
 

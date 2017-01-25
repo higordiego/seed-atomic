@@ -1,6 +1,6 @@
 'use strict'
 import jwt  	from 'jsonwebtoken'
-import pass		from '../_quarks/user-password'
+import pass		from '../_quarks/password'
 module.exports = (app) => (req,res)=>{
 	const User = require('../_moleculas/user-model')
 	
@@ -10,6 +10,7 @@ module.exports = (app) => (req,res)=>{
 		if (!user) {
 			res.json({ success: false, message: 'Invalid login' });
 		} else if (user) {
+			console.log(user);
 			if(pass.validate(user.password, req.body.senha)) {
 				res.json({ success: false, message: 'Invalid password' });
 			} else {

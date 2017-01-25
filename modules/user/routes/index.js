@@ -24,7 +24,7 @@ module.exports =  (app) => {
 
 
    // Default User login: 'higor' password '1234'
-/*  app.route('/default')
-  	 .get(defaultUser)*/
+  app.route('/default')
+  	 .get(defaultUser)
 
 }

@@ -2,7 +2,7 @@
 import mongoose from 'mongoose'
 
 const online = true;
-const url =  online ? 'mongodb://qtur:qtur@ds049466.mlab.com:49466/qtur' : 'mongodb://localhost/bares';
+const url =  online ? '' : 'mongodb://localhost/seed-atomic';
 
   mongoose.Promise = require('bluebird')
 

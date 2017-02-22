@@ -1,7 +1,6 @@
-'use strict'
-import jwt       from 'jsonwebtoken'
-import User      from '../_moleculas/user-model'
 module.exports = (express,app)=>{
+  const jwt       = require('jsonwebtoken')
+  const User      = require('../_moleculas/user-model')
   const apiRoutes = express.Router(); 
 
   apiRoutes.use((req, res, next)=> {
@@ -21,11 +20,11 @@ module.exports = (express,app)=>{
       });
 
     } catch (err) {
-       res.status(401).json({message: 'Error: Your token is invalid'});
-    }
-  } else {
-    res.status(401).json({message: 'Error: Authentication not found'})
-  }
+     res.status(401).json({message: 'Error: Your token is invalid'});
+   }
+ } else {
+  res.status(401).json({message: 'Error: Authentication not found'})
+}
 });
   return apiRoutes;
 }

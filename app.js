@@ -1,12 +1,13 @@
 'use strict'
-import express     	 from 'express'
-import path      	 from 'path'
-import morgan   	 from 'morgan'
-import bodyParser  	 from 'body-parser'
-import cors			 from 'cors'
-import http 		 from 'http'
-import cluster     	 from 'cluster'
-import mongo 		 from './_config/mongoDB'
+const express     	 = require ('express')
+const path      	 = require ('path')
+const morgan   	 	 = require ('morgan')
+const bodyParser  	 = require ('body-parser')
+const cors			 = require ('cors')
+const http 		 	 = require ('http')
+const cluster     	 = require ('cluster')
+const validator      = require ('express-validator')
+const mongo 		 = require ('./_config/mongoDB')
 
 const app = express();
 
@@ -30,7 +31,8 @@ app.set('port', (process.env.PORT || 3000));
 
 const port = app.get('port')
 const server = http.createServer(app);
-require ('./modules/user/routes/index')(app)
+
+require('./routes')(app)
 
 
 

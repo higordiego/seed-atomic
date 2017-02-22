@@ -1,6 +1,6 @@
 'use strict'
 
-import crypto from 'crypto';
+const crypto = require ('crypto');
 
 let SaltLength = 9;
 
@@ -10,7 +10,7 @@ function createHash(password){
   return salt + hash;
 }
 
-function  validateHash(hash, password) {
+function validateHash(hash, password) {
   let salt = hash.substr(0, SaltLength);
   let validHash = salt + md5(password + salt);
   return hash === validHash;

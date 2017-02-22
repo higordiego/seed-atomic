@@ -1,29 +1,31 @@
 'use strict'
-import mongoose, {Schema} from 'mongoose';
+const mongoose =  require('mongoose');
+const Schema   = mongoose.Schema;
 
-
-import name from '../_atomo/name'
-import login from '../_atomo/login'
-import password from '../_atomo/password'
-import email from '../_atomo/email'
-import type from '../_atomo/type'
-import token from '../_atomo/token'
+const name 					= require ('../_atomo/string-required')
+const email 				= require ('../_atomo/string-required')
+const login 				= require('../_atomo/string-required-unique')
+const password 				=  require('../_atomo/string-password-crypt')
+const token 				= require('../_atomo/string')
+const status 				= require('../_atomo/boolean-default-true')
+const created_at		    = require('../_atomo/date-default')
+const updated_at 		    = require('../_atomo/date-default')
+const deleted_at 		    = require('../_atomo/date-default')
 
 const User = new Schema({
 	name,
 	login,
 	password,
 	email,
-	type,
-	token
+	token,
+	created_at,
+	updated_at,
+	deleted_at
 });
 
-User.index({login: 1});
+User.index({login: 1,status:1, email:1,token:1});
 
 const molecule =  mongoose.model('Users', User);
 
-console.log(molecule.schema)
 
 module.exports = molecule
-
-

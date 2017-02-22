@@ -1,5 +1,5 @@
 'use strict'
-import pass from '../_quarks/password'
+const pass = require('../_quarks/password')
 
 function configPass (v) {
 	return pass.hash(v);

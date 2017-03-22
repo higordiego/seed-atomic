@@ -1,15 +1,14 @@
-
 module.exports = (app) => (req,res)=>{
 	const jwt  	=  require('jsonwebtoken')
 	const pass  =  require('../_quarks/password')
-	const User = require('../_moleculas/user-model')
-	User.findOne({$and: [{login: req.body.login}, {status: true}]},{token: 0})
+	const User = require('../_molecules/user-model')
+	User.findOne({login: req.body.login},{token: 0})
 	.exec()
 	.then((user)=>{
 		if (!user) {
 			res.json({ success: false, message: 'Invalid login' });
 		} else if (user) {
-			if(pass.validate(user.password, req.body.senha)) {
+			if(!pass.validate(user.password, req.body.senha)) {
 				res.json({ success: false, message: 'Invalid password' });
 			} else {
 				var token = jwt.sign(user, app.get('superSecret'), {

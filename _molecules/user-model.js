@@ -21,7 +21,7 @@ const User = new Schema({
 	updated_at
 });
 
-User.index({login: 1,status:1, email:1,token:1});
+User.index({login: 1,status:1, email:1});
 
 const molecule =  mongoose.model('Users', User);
 

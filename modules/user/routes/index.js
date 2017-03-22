@@ -5,7 +5,7 @@ const update        = require( '../../../_organelles/organelle-update');
 const remove        = require( '../../../_organelles/organelle-remove');
 const validateUser  = require( '../../../_organelles/organelle-validate-login');
 const defaultUser   = require( '../../../_organelles/organelle-user-default');
-const userModel     = require( '../../../_moleculas/user-model');
+const userModel     = require( '../../../_molecules/user-model');
 module.exports =  (app) => {
 
   const url = '/api/user'

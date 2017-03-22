@@ -1,5 +1,5 @@
 module.exports = (req,res)=>{
-	const User =  require('../_moleculas/user-model')
+	const User =  require('../_molecules/user-model')
 	let user = new User();
 	user.name =  'higor',
 	user.email = 'higor@gmail.com'

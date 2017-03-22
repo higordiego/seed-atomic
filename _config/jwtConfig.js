@@ -1,6 +1,6 @@
 module.exports = (express,app)=>{
   const jwt       = require('jsonwebtoken')
-  const User      = require('../_moleculas/user-model')
+  const User      = require('../_molecules/user-model')
   const apiRoutes = express.Router(); 
 
   apiRoutes.use((req, res, next)=> {
@@ -8,14 +8,14 @@ module.exports = (express,app)=>{
     if (token) {
      try {
       const decoded = jwt.decode(token, app.get('superSecret'));
-      if (decoded.exp <= Date.now()) {
-
+      if (decoded.exp <= Date.now() &&  req.employee) {
         res.status(400).json({error: 'Access Expired, please sign in again'});
       }
-      User.findOne({token: decoded.token }, function(err, user) {
+
+      User.findOne({token: decoded.token }, function(err, Employee) {
         if(err)
-          res.status(500).json({message: "Error fetching token user."})
-        req.user = user;
+          res.status(500).json({message: "Error fetching token Employee."})
+        req.employee = Employee;
         return next();
       });
 

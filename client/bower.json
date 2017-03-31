@@ -1,0 +1,32 @@
+{
+  "name": "programador",
+  "description": "sistema para orcamentos",
+  "main": "app.js",
+  "authors": [
+    "Higor Diego"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "programdor",
+    "nodejs",
+    "mongodb",
+    "angular",
+    "bootstrap"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "^1.6.3",
+    "angular-ui-router": "^0.4.2",
+    "angular-flash-alert": "^2.4.0",
+    "ngstorage": "^0.3.11"
+  }
+}

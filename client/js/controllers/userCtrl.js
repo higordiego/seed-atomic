@@ -32,6 +32,7 @@
 					Flash.clear()
 					if(user.password1 == user.password2){
 						user._id = $scope.user._id
+						user.forgot = $scope.user.forgot
 						$scope.validateNew = false;
 						UserFactory.passwordNew(user).then(function(response){
 							$scope.validateNew = true;

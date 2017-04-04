@@ -4,7 +4,6 @@ const morgan = require('morgan')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const http = require('http')
-const uws = require('uws');
 const socket = require('socket.io')
 const mongo = require('./_config/mongodb')
 const app = express();
@@ -35,7 +34,9 @@ const server = http.createServer(app)
 
 const io = socket.listen(server);
 
-io.ws = new uws.Server({
+io.engine.ws = new (require('uws').Server)({
+    noServer: true,
+    clientTracking: false,
     perMessageDeflate: false
 });
 
